@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://s3.amazonaws.com/codecademy-content/projects/bootstrap.min.css" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href="css/main.css" rel="stylesheet" />
+    
+     <!-- Include the core AngularJS library -->
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.5/angular.min.js"></script>
+    
+    <!-- Include the AngularJS routing library -->
+    <script src="https://code.angularjs.org/1.2.28/angular-route.min.js"></script>
+
+  </head>
+  <body ng-app="myApp">
+    <div class="header">
+      <div class="container" style="
+    text-align: center;
+    margin-bottom: 10px;
+                                    background-color:grey
+">
+        <h1 style="color:orange">Micro Social Directory Using AngularJs</h1>
+      </div>
+    </div>
+<div class="container">
+    <div ng-controller="MainController">
+      <div class="row">
+        <div ng-repeat="x in data" class="col-md-4">
+         					 <div ng-if="x.email!==y.email" style="margin:10px">
+                    		<img class="img-circle img-responsive" ng-src="{{x.picture.medium}}" ng-click="showDiv(x)"/>
+                     <div > 
+                       <p class="badge" ng-click="showDiv(x)">{{x.name.title +" "+x.name.first+" "+x.name.last}}</p>
+          							<p ng-click="showDiv(x)">{{x.email}}</p>
+                     </div>
+                     </div>
+          		 <div ng-if="x.email===y.email" class="alert alert-success alert-dismissable" style="
+    position: absolute;
+    z-index: 1;
+    display: inline;
+">
+  <a href="#" class="close" data-dismiss="alert" aria-label="close" ng-click=hide()>&times;</a>
+        		<p >Name: {{x.name.title | uppercase}} {{x.name.first+" "+x.name.last}}</p>
+                 <p >Gender: {{x.gender}}</p>
+                 <p >Address: {{x.location.street+", "+x.location.city+", "+x.location.state+", "+x.location.postcode}}</p>
+                 <p >Email: {{x.email}}</p>
+                 <p >Dob: {{x.dob}}</p>
+                 <p >RegisteredID: {{x.registered}}</p>
+                 <p >Username: {{x.login.username}}</p>
+                 <p >Password: {{x.login.password}}</p>
+                 <p >Md5: {{x.login.md5}}</p>
+          </div>
+        	
+  		  </div>
+      </div>
+    </div>
+</div>
+    <!-- Modules -->
+    <script src="js/app.js"></script>
+
+    <!-- Controllers -->
+    <script src="js/controllers/MainController.js"></script>
+    <script src="js/controllers/details.js"></script>
+      <script src="js/service/randomPerson.js"></script>
+  </body>
+</html>
